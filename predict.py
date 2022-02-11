@@ -94,6 +94,8 @@ model = load_model('keras_model.h5')
 @app.route('/process', methods=['POST'])
 def process_audio_file():
     audio = request.files.get('audio')
+    audio.save('test.wav')
+    
     audio = AudioSegment.from_wav(audio)
     framerate = audio.frame_rate
     audios = split_audio(audio)
